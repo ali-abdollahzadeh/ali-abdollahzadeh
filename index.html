@@ -3,151 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ali Abdollahzadeh | Software Engineer</title>
-    <meta name="description" content="Master's Student at Politecnico di Torino specializing in Flutter, React Native, and IoT. Developer of PoP-app and Teledrive.">
     
+    <!-- GOOGLE SEARCH CONSOLE: Paste your meta tag below -->
+    <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE" />
+    
+    <title>Ali Abdollahzadeh | Mobile Engineer</title>
+    <meta name="description" content="ICT for Smart Societies Master's Student at PoliTo. Specialized in Flutter, React Native, and IoT.">
+
     <style>
         :root {
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.25);
-            --text-color: #ffffff;
+            --bg-dark: #030712;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-stroke: rgba(255, 255, 255, 0.15);
+            --accent: #6366f1;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "SF Pro Display", -apple-system, sans-serif; }
 
         body {
-            /* 2026 Mesh Gradient Look */
-            background: radial-gradient(at 0% 0%, #4f46e5 0px, transparent 50%),
-                        radial-gradient(at 100% 0%, #7c3aed 0px, transparent 50%),
-                        radial-gradient(at 100% 100%, #db2777 0px, transparent 50%),
-                        radial-gradient(at 0% 100%, #2563eb 0px, transparent 50%);
-            background-color: #0f172a;
-            min-height: 100vh;
+            background-color: var(--bg-dark);
+            height: 100vh;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            color: var(--text-color);
+            color: white;
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+        /* 2026 Animated Mesh Gradient */
+        .mesh-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(circle at 20% 30%, #4338ca 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, #db2777 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #1e1b4b 0%, transparent 100%);
+            filter: blur(80px);
+            animation: meshMove 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes meshMove {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.2) translate(5%, 5%); }
+        }
+
+        /* The Main Glass Container */
+        .glass-shell {
+            position: relative;
+            width: 90%;
+            max-width: 440px;
             padding: 40px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            border-radius: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            
+            /* Specular Highlights (The "Thin Edge" look) */
+            border: 1px solid var(--glass-stroke);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                inset 0 1px 1px rgba(255,255,255,0.1);
+            
             text-align: center;
-            animation: fadeIn 1s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Profile Image / Icon Area */
+        .profile-orbit {
+            width: 80px; height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 22px;
+            background: linear-gradient(45deg, #6366f1, #a855f7);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
         }
 
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            letter-spacing: -0.5px;
-        }
+        h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 4px; }
+        .location { font-size: 14px; opacity: 0.5; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
 
-        p.subtitle {
-            font-size: 1.1rem;
-            opacity: 0.8;
+        .bio-box {
+            background: rgba(0,0,0,0.2);
+            padding: 16px;
+            border-radius: 20px;
             margin-bottom: 24px;
+            font-size: 15px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .tag-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
+        /* Project Grid */
+        .links-grid { display: grid; gap: 12px; }
 
-        .tag {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            border: 1px solid var(--glass-border);
-        }
-
-        .projects {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .project-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-            border: 1px solid transparent;
-            transition: 0.3s;
-            cursor: pointer;
+        .link-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 14px;
+            border-radius: 16px;
             text-decoration: none;
             color: white;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .project-item:hover {
-            border-color: var(--glass-border);
-            background: rgba(255, 255, 255, 0.1);
+        .link-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: scale(1.02);
+            border-color: rgba(255,255,255,0.3);
         }
 
-        .btn {
-            display: inline-block;
-            background: white;
-            color: #0f172a;
-            padding: 12px 32px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: 0.3s;
+        .status-dot {
+            width: 8px; height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        /* Footer / Social Icon */
+        .footer-social {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
+
+        .footer-social a { color: white; opacity: 0.4; transition: 0.3s; }
+        .footer-social a:hover { opacity: 1; }
+
     </style>
 </head>
 <body>
 
-    <div class="glass-card">
+    <div class="mesh-bg"></div>
+
+    <div class="glass-shell">
+        <div class="profile-orbit">👨‍💻</div>
         <h1>Ali Abdollahzadeh</h1>
-        <p class="subtitle">ICT for Smart Societies @ PoliTo</p>
-        
-        <div class="tag-container">
-            <span class="tag">Flutter</span>
-            <span class="tag">React Native</span>
-            <span class="tag">IoT</span>
-            <span class="tag">Firebase</span>
+        <div class="location">Turin, Italy • ICT4SS</div>
+
+        <div class="bio-box">
+            Master's Student at <b>PoliTo</b>. Building <b>PoP-app</b> (Oncology Thesis) and <b>Teledrive</b> with Flutter & React Native.
         </div>
 
-        <div class="projects">
-            <a href="https://github.com/ali-abdollahzadeh" class="project-item">
-                <strong>📦 PoP-app</strong>
-                <p style="font-size: 0.8rem; opacity: 0.7;">Oncology Prehabilitation Thesis Project</p>
+        <div class="links-grid">
+            <a href="https://github.com/ali-abdollahzadeh" class="link-card">
+                <span>📱 Thesis: PoP-app</span>
+                <div class="status-dot"></div>
             </a>
-            <a href="https://github.com/ali-abdollahzadeh" class="project-item">
-                <strong>🚗 Teledrive</strong>
-                <p style="font-size: 0.8rem; opacity: 0.7;">Smart Mobility Solutions</p>
+            <a href="https://github.com/ali-abdollahzadeh" class="link-card">
+                <span>🚗 Teledrive Project</span>
+                <div class="status-dot"></div>
+            </a>
+            <a href="https://linkedin.com" class="link-card" style="opacity: 0.7;">
+                <span>💼 Professional LinkedIn</span>
+                <span>→</span>
             </a>
         </div>
 
-        <a href="https://github.com/ali-abdollahzadeh" class="btn">View GitHub Profile</a>
+        <div class="footer-social">
+            <!-- Add your icons here -->
+            <small>aliabdollahzadeh.dev</small>
+        </div>
     </div>
 
 </body>
